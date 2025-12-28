@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # Backend API
+  api:
+    build: ./web/backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./web/backend:/app
+      - /workspace:/workspace
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/aiplatform
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  # Frontend
+  frontend:
+    build: ./web/frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web/frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:5000
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # Database
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=aiplatform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # Redis for caching and queues
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # ComfyUI (requires GPU)
+  comfyui:
+    build: ./docker/comfyui
+    ports:
+      - "8188:8188"
+    volumes:
+      - /workspace/ComfyUI:/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
