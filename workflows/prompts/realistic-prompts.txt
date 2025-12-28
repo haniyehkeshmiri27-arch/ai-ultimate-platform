@@ -1,0 +1,19 @@
+# ComfyUI Realistic Photo Workflow
+realistic photo of a person, natural lighting, high quality, 8k, detailed
+Negative: low quality, blurry, distorted, cartoon, anime
+
+# Portrait
+subject, portrait photo, professional lighting, studio setup, sharp focus, bokeh background
+Negative: distorted face, multiple people, cropped
+
+# Casual Home Photo
+subject, casual home photo, natural indoor lighting, smartphone quality, authentic moment, slightly blurred background
+Negative: professional photography, studio, fashion, overly posed
+
+# Outdoor Natural
+subject, outdoor photo, golden hour lighting, natural environment, candid shot, soft focus background
+Negative: studio, artificial lighting, overexposed
+
+# Close-up Face
+subject, close-up portrait, detailed skin texture, natural makeup, soft lighting, realistic pores and details
+Negative: airbrushed, perfect skin, fake, filtered

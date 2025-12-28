@@ -1,0 +1,64 @@
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+dist/
+build/
+*.so
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+.next/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models (too large)
+*.safetensors
+*.ckpt
+*.pth
+*.pt
+
+# Training outputs
+training/output/
+training/logs/
+*.log
+
+# Backups
+backups/
+*.backup
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Secrets
+*.pem
+*.key
+*-key.json
+credentials/
+secrets/
+
+# Docker
+.dockerignore
