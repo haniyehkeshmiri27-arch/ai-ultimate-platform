@@ -1,0 +1,14 @@
+Host gpu-server
+    HostName 213.192.2.93
+    User root
+    Port 40135
+    IdentityFile ~/.ssh/id_ed25519
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+
+Host gpu-server-proxy
+    HostName ssh.runpod.io
+    User dtel9rkwvr9tkd-64410d0b
+    IdentityFile ~/.ssh/id_ed25519
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
