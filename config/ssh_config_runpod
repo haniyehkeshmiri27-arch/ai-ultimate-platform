@@ -1,0 +1,46 @@
+Host runpod
+    HostName dte19rkwvr91kd-19123.proxy.runpod.net
+    User root
+    Port 22
+    PreferredAuthentications password,keyboard-interactive,publickey
+    ServerAliveInterval 30
+    ServerAliveCountMax 6
+    TCPKeepAlive yes
+    StrictHostKeyChecking accept-new
+
+Host runpod-direct
+    HostName 213.192.2.93
+    User root
+    Port 40135
+    PreferredAuthentications password,keyboard-interactive,publickey
+    ServerAliveInterval 30
+    TCPKeepAlive yes
+
+Host runpod-all
+    HostName dte19rkwvr91kd-19123.proxy.runpod.net
+    User root
+    Port 22
+    PreferredAuthentications password,keyboard-interactive,publickey
+    LocalForward 5000 localhost:5000
+    LocalForward 6006 localhost:6006
+    LocalForward 7860 localhost:7860
+    LocalForward 8188 localhost:8188
+    LocalForward 8888 localhost:8888
+    ServerAliveInterval 30
+    TCPKeepAlive yes
+
+
+Host gpu-server
+    HostName 213.192.2.93
+    User root
+    Port 40135
+    IdentityFile ~/.ssh/runpod_key
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+
+Host gpu-server-proxy
+    HostName ssh.runpod.io
+    User dtel9rkwvr9tkd-64410d0b
+    IdentityFile ~/.ssh/runpod_key
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
