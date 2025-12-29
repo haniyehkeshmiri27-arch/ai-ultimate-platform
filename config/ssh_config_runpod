@@ -44,3 +44,13 @@ Host gpu-server-proxy
     IdentityFile ~/.ssh/runpod_key
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
+
+Host runpod-gpu
+    HostName 82.221.170.242
+    User root
+    Port 21914
+    IdentityFile ~/.ssh/runpod_gpu
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
